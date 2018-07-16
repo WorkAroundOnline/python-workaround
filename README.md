@@ -27,7 +27,6 @@ wao = Client(api_key='YOUR_API_KEY')
 ### Get a Quote
 
 ```python
-
 # Quotes are free to create
 quote = wao.create_quote()
 
@@ -43,6 +42,8 @@ task1 = Task(external_url="https://survey.cards/s/rs8Zj4")
 wao.create_tasks(quote=quote, tasks=[task1])
 ```
 
+_tip: To upload custom data with a task, provide `meta={...}`_
+
 ### Get Task Information
 
 ```python
@@ -55,17 +56,30 @@ print("content:", tasks[0].content)
 # content: { "question": "some_answer" }
 ```
 
-### Cancel Tasks
+### Cancel a Task
 
 ```python
 print("status:", tasks[1].status)
 # status: incomplete
 
+# if you're cancelling multiple tasks, use wao.cancel_tasks(tasks=[...])
 tasks[1].cancel()
 
 print("status:", tasks[1].status)
 # status: cancelled
 ```
+
+### Accept or Reject Tasks
+
+```python
+tasks = wao.get_tasks(task_numbers=[1022, 1024])
+
+for task in tasks:
+  # review tasks using task.meta + task.content
+  task.accept() # or task.reject()
+```
+
+_tip: To accept/reject tasks in bulk, use `wao.accept_tasks(tasks=[...])` and `wao.reject_tasks(tasks=[...])`_
 
 ### Get Billing Information
 
