@@ -52,9 +52,7 @@ print("status:", tasks[0].status)
 # status: complete
 
 print("content:", tasks[0].content)
-print("meta:", tasks[0].meta)
 # content: { "question": "some_answer" }
-# meta: { "metakey": "some_meta_information" }
 ```
 
 ### Cancel Tasks
