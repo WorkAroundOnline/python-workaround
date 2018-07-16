@@ -24,7 +24,7 @@ from workaround import Client, Task
 wao = Client(api_key='YOUR_API_KEY')
 ```
 
-### Get a Quote, Create Tasks
+### Get a Quote
 
 ```python
 
@@ -33,12 +33,21 @@ quote = wao.create_quote()
 
 print("cost per task: $", quote.cost_per_task)
 # cost per task: $0.10
+```
 
+### Create A Task
+
+```python
 task1 = Task(external_url="https://survey.cards/s/rs8Zj4")
 
 wao.create_tasks(quote=quote, tasks=[task1])
 ```
 
+### Get Billing Information
 
+```python
+billing = wao.get_billing()
 
-
+print("account credit: ", billing.account_credit)
+print("quotes created: ", len(billing.quotes))
+```
