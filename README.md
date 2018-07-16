@@ -43,6 +43,32 @@ task1 = Task(external_url="https://survey.cards/s/rs8Zj4")
 wao.create_tasks(quote=quote, tasks=[task1])
 ```
 
+### Get Task Information
+
+```python
+tasks = wao.get_tasks(task_numbers=[1022, 1024])
+
+print("status:", tasks[0].status)
+# status: complete
+
+print("content:", tasks[0].content)
+print("meta:", tasks[0].meta)
+# content: { "question": "some_answer" }
+# meta: { "metakey": "some_meta_information" }
+```
+
+### Cancel Tasks
+
+```python
+print("status:", tasks[1].status)
+# status: incomplete
+
+tasks[1].cancel()
+
+print("status:", tasks[1].status)
+# status: cancelled
+```
+
 ### Get Billing Information
 
 ```python
