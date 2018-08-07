@@ -4,7 +4,13 @@ class Task:
         self.iframe_url = iframe_url
         self.description = description
         self.status = 'local'
-    
+
     def cancel(self):
         if self.status == 'local':
             raise "Can't cancel task that was never created"
+
+    def accept(self):
+        pass
+
+    def reject(self):
+        pass
